@@ -21,7 +21,7 @@ public class TaiKhoanGameController {
     public String loadTbl(Model model) {
         List<TaiKhoanGame> lstTK = service.getAll();
         model.addAttribute("lstTK", lstTK);
-        return "tk-game";
+        return "trang-chu/index";
     }
 
 }
