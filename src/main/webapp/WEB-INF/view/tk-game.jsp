@@ -29,19 +29,27 @@
     <table class="table table-striped table-hover text-center">
         <thead>
         <tr>
-            <th scope="col">ProductId</th>
-            <th scope="col">ProductName</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
+            <th scope="col">Id</th>
+            <th scope="col">Mã TK</th>
+            <th scope="col">Tên TK</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Đơn Giá</th>
+            <th scope="col">Tài Khoản</th>
+            <th scope="col">Mật Khẩu</th>
+            <th scope="col">Cac</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${lstSP}" var="x">
+        <c:forEach items="${lstTK}" var="x">
             <tr>
-                <td>${x.productId}</td>
-                <td>${x.productName}</td>
-                <td>${x.price}</td>
-                <td>${x.quantity}</td>
+                <td>${x.id}</td>
+                <td>${x.ma}</td>
+                <td>${x.ten}</td>
+                <td>${x.soLuong}</td>
+                <td>${x.donGia}</td>
+                <td>${x.taiKhoan}</td>
+                <td>${x.matKhau}</td>
+                <td><img src="https://i.postimg.cc/RFcxC3sy/163796-copy-copy-2-copy.png" class="img-thumbnail" alt="..."></td>
             </tr>
         </c:forEach>
         </tbody>
