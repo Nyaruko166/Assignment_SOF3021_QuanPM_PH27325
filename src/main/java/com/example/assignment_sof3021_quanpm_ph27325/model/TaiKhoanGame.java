@@ -32,9 +32,9 @@ public class TaiKhoanGame {
     @Column(name = "dongia")
     private BigDecimal donGia;
 
-    @Column(name = "taikhoan")
-    private String taiKhoan;
+    @Column(name = "server")
+    private String server;
 
-    @Column(name = "matkhau")
-    private String matKhau;
+    @Column(name = "anh")
+    private String anh;
 }

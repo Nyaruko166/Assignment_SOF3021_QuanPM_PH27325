@@ -34,8 +34,8 @@
             <th scope="col">Tên TK</th>
             <th scope="col">Số lượng</th>
             <th scope="col">Đơn Giá</th>
-            <th scope="col">Tài Khoản</th>
-            <th scope="col">Mật Khẩu</th>
+            <th scope="col">Server</th>
+            <th scope="col">Ảnh</th>
             <th scope="col">Cac</th>
         </tr>
         </thead>
@@ -47,9 +47,8 @@
                 <td>${x.ten}</td>
                 <td>${x.soLuong}</td>
                 <td>${x.donGia}</td>
-                <td>${x.taiKhoan}</td>
-                <td>${x.matKhau}</td>
-                <td><img src="https://i.postimg.cc/RFcxC3sy/163796-copy-copy-2-copy.png" class="img-thumbnail" alt="..."></td>
+                <td>${x.server}</td>
+                <td><img src="${x.anh}" class="img-thumbnail" alt="..."></td>
             </tr>
         </c:forEach>
         </tbody>
