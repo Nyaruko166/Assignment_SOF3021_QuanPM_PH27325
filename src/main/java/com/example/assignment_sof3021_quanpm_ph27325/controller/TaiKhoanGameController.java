@@ -23,7 +23,8 @@ public class TaiKhoanGameController {
     public String loadTbl(Model model) {
         List<TaiKhoanGame> lstTK = service.getAll();
         model.addAttribute("lstTK", lstTK);
-        return "trang-chu/index";
+//        return "trang-chu/index";
+        return "crud-tk-game/tk-game";
     }
 
     @GetMapping("/detail/{maTK}")
