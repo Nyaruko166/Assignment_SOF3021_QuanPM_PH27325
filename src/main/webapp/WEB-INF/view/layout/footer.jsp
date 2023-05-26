@@ -35,7 +35,7 @@
                     <li class="list-inline-item">
                         <a href="https://twitter.com/Nyaruko34612462">
                                     <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-circle fa-stack-2x" style="color: black"></i>
                                         <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
                                     </span>
                         </a>
@@ -43,7 +43,7 @@
                     <li class="list-inline-item">
                         <a href="https://www.facebook.com/nyaruko166">
                                     <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-circle fa-stack-2x" style="color: black"></i>
                                         <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
                                     </span>
                         </a>
@@ -51,7 +51,7 @@
                     <li class="list-inline-item">
                         <a href="https://github.com/Nyaruko166">
                                     <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-circle fa-stack-2x" style="color: black"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                                     </span>
                         </a>

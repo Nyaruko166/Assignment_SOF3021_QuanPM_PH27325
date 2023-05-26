@@ -1,0 +1,26 @@
+.form-check-label {
+    font-weight: normal;
+}
+
+label {
+    font-weight: bold;
+}
+
+button {
+    margin-top: 20px;
+}
+
+.table_title {
+    font-weight: bold;
+}
+
+table {
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    /*margin-top: 15px;*/
+    /*margin-bottom: 20px;*/
+}

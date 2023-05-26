@@ -15,17 +15,17 @@ CREATE TABLE TaiKhoanGame
 
 INSERT INTO TaiKhoanGame (Ma, Ten, SoLuong, DonGia, Server, Anh)
 VALUES ('TK001', N'Tl10+ | Honkai Star Rail Reroll account', 30, 10000, 'Asia',
-        'https://i.postimg.cc/Vk6CCwnm/163795-copy-copy-2-copy.webp'),
+        '/img/tl10.jpg'),
        ('TK002', N'TL15+ | Honkai Star Rail Reroll account', 20, 15000, 'EU',
-        'https://i.postimg.cc/WbtkQ1md/honkaisr-1-copy.webp'),
+        '/img/tl15.jpg'),
        ('TK003', N'TL20+ | Honkai Star Rail Reroll HSR acc gem', 6, 25000, 'Asia',
-        'https://i.postimg.cc/ZqD19kzf/honkaisr-1-copy-Recovered-1-copy.webp'),
+        '/img/tl20.jpg'),
        ('TK004', N'TL25+ | Honkai Star Rail HSR Reroll account', 4, 55000, 'US',
-        'https://i.postimg.cc/MH1Q3w9G/honkaisr-1.webp'),
+        '/img/tl25.jpg'),
        ('TK005', N'TL30+ | Honkai Star Rail Reroll HSR acc gem', 2, 70000, 'Asia',
-        'https://i.postimg.cc/RFcxC3sy/163796-copy-copy-2-copy.png'),
+        '/img/tl30.jpg'),
        ('TK006', N'Tl40+ | Honkai Star Rail Reroll HSR acc gem', 1, 100000, 'Asia',
-        'https://i.postimg.cc/HsPb0HCv/aaaa.jpg')
+        '/img/tl40.jpg')
 
 SELECT *
 FROM TaiKhoanGame
