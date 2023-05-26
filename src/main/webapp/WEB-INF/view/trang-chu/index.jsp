@@ -1,12 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%--<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>--%>
 <%--<c:set var="url">${pageContext.request.contextPath}</c:set>--%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Web ban game wjpu</title>
-    <base href="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}/"/>
+    <%--    <base href="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}/"/>--%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
@@ -78,7 +78,6 @@
     <h3 class="title" style="margin: 30px">Danh sách tài khoản game</h3>
     <div class="row" style="margin: 0 auto">
         <c:forEach items="${lstTK}" var="x">
-
             <div class="col-4" style="margin-bottom: 40px;display: flex;justify-content: center;">
                 <a href="/detail/${x.id}" style="color: black; text-decoration: none">
                     <div class="card" style="width: 18rem;">
@@ -100,6 +99,5 @@
 <%@include file="../layout/footer.jsp" %>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
 </body>
 </html>

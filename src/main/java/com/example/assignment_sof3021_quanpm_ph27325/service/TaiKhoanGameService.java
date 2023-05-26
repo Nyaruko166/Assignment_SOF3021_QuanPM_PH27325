@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TaiKhoanGameService implements ITaiKhoanGameService {
@@ -16,5 +17,10 @@ public class TaiKhoanGameService implements ITaiKhoanGameService {
     @Override
     public List<TaiKhoanGame> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public TaiKhoanGame findByMa(UUID maTK) {
+        return repository.findById(maTK).orElse(null);
     }
 }
