@@ -9,4 +9,8 @@ public interface ITaiKhoanGameService {
     List<TaiKhoanGame> getAll();
 
     TaiKhoanGame findByMa(UUID maTK);
+
+    Boolean saveTK(TaiKhoanGame tk);
+
+    String deleteTK(TaiKhoanGame tk);
 }

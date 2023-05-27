@@ -15,8 +15,20 @@ public class TaiKhoanGameService implements ITaiKhoanGameService {
     private ITaiKhoanGameRepository repository;
 
     @Override
+    public String deleteTK(TaiKhoanGame tk) {
+        repository.delete(tk);
+        return "Xoá Thành Công.";
+    }
+
+    @Override
     public List<TaiKhoanGame> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Boolean saveTK(TaiKhoanGame tk) {
+        repository.save(tk);
+        return true;
     }
 
     @Override
