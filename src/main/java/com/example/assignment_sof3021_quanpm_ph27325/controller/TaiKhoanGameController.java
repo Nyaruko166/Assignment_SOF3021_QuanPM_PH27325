@@ -28,9 +28,22 @@ public class TaiKhoanGameController {
 
     private TaiKhoanGame tk = new TaiKhoanGame();
 
-    @GetMapping
-    public String loadTbl(Model model) {
+    private void loadTbl(Model model) {
         List<TaiKhoanGame> lstTK = service.getAll();
+        model.addAttribute("lstTK", lstTK);
+    }
+
+    @GetMapping
+    public String view(Model model,
+                       @RequestParam(value = "findByName", required = false) String tenTK,
+                       @RequestParam(value = "min", required = false) BigDecimal min,
+                       @RequestParam(value = "max", required = false) BigDecimal max) {
+        List<TaiKhoanGame> lstTK;
+        if (tenTK == null || tenTK.isBlank()) {
+            lstTK = service.getAll();
+        } else {
+            lstTK = service.findByTenContains(tenTK);
+        }
         model.addAttribute("lstTK", lstTK);
 //        return "trang-chu/index";
         return "crud-tk-game/tk-game";
@@ -58,23 +71,24 @@ public class TaiKhoanGameController {
         String fileName = StringUtils.cleanPath(anh.getOriginalFilename());
         copyImg(anh, fileName);
         service.saveTK(new TaiKhoanGame(null, ma, ten, soLuong, donGia, server, "/img/" + fileName));
+        loadTbl(model);
         model.addAttribute("mess", "Thêm Thành Công.");
-        return loadTbl(model);
+        return "crud-tk-game/tk-game";
     }
 
     @GetMapping("/crud/delete/{idTK}")
     public String deleteTK(@PathVariable("idTK") UUID id, Model model) throws IOException {
         TaiKhoanGame tk = service.findByMa(id);
         Files.deleteIfExists(Path.of("./src/main/webapp" + tk.getAnh()));
+        loadTbl(model);
         model.addAttribute("mess", service.deleteTK(tk));
-        return loadTbl(model);
+        return "crud-tk-game/tk-game";
     }
 
     @GetMapping("/crud/detail/{idTK}")
     public String detailTK(@PathVariable("idTK") UUID id, Model model) {
         tk = service.findByMa(id);
-        List<TaiKhoanGame> lstTK = service.getAll();
-        model.addAttribute("lstTK", lstTK);
+        loadTbl(model);
         model.addAttribute("tk", tk);
         return "crud-tk-game/tk-game";
     }
@@ -102,11 +116,12 @@ public class TaiKhoanGameController {
                 copyImg(anh, fileName);
             }
             if (service.saveTK(tk)) {
+                loadTbl(model);
                 model.addAttribute("mess", "Sửa Thành Công.");
             }
 
         }
-        return loadTbl(model);
+        return "crud-tk-game/tk-game";
     }
 
     public void copyImg(MultipartFile anh, String fileName) {

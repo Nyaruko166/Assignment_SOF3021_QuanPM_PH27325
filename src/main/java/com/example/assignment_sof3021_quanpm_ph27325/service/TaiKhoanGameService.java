@@ -5,6 +5,7 @@ import com.example.assignment_sof3021_quanpm_ph27325.repository.ITaiKhoanGameRep
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,5 +35,15 @@ public class TaiKhoanGameService implements ITaiKhoanGameService {
     @Override
     public TaiKhoanGame findByMa(UUID maTK) {
         return repository.findById(maTK).orElse(null);
+    }
+
+    @Override
+    public List<TaiKhoanGame> findByTenContains(String tenTK) {
+        return repository.findByTenContains(tenTK);
+    }
+
+    @Override
+    public List<TaiKhoanGame> findByDonGiaBetween(BigDecimal min, BigDecimal max) {
+        return repository.findByDonGiaBetween(min, max);
     }
 }
