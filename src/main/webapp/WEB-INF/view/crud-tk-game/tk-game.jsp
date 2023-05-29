@@ -5,9 +5,17 @@
     <title>CRUD TK</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+          rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="/css/css.css">
 </head>
 <body>
+
+<%@include file="../layout/header.jsp" %>
+
 <section class="container">
     <form id="suck" method="post" enctype="multipart/form-data" class="container" style="margin-bottom: 0px">
         <h1 class="title">Quản lý tài khoản</h1>
@@ -47,8 +55,7 @@
                    style="margin: 0" href="http://localhost:27325"></a>
             </div>
         </c:if>
-        <c:if test="${not pageTK.isEmpty() and param.size()!=0 and param.page <= 1
-        and not param.containsKey('page')}">
+        <c:if test="${not pageTK.isEmpty() and param.size()!=0 and (param.page <= 1 or not param.containsKey('page'))}">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Tìm thấy ${pageTK.getTotalElements()} bản ghi</strong>
                 <a class="btn-close" data-bs-dismiss="alert" aria-label="Close"
@@ -123,7 +130,7 @@
                                placeholder="Giá trị nhỏ nhất" value="${param.min}">
                     </div>
                     <div class="col-5">
-                        <input type="number" class="form-control" id="findByRange" name="max"
+                        <input type="number" class="form-control" id="findByRange1" name="max"
                                placeholder="Giá trị lớn nhất" value="${param.max}">
                     </div>
                     <div class="col-2">
@@ -140,7 +147,7 @@
         <button form="suck" formaction="/crud/tk-game/update" type="submit" class="btn btn-success" name="update"
                 style="margin: 0" onclick="return confirm('Bạn có muốn sửa?')">Sửa
         </button>
-        <a class="btn btn-success" name="reset" href="http://localhost:27325/reset"
+        <a class="btn btn-success" name="reset" href="/crud/reset"
            style="margin: 0">Reset
         </a>
     </div>
@@ -219,6 +226,9 @@
         </nav>
     </section>
 </c:if>
+
+<%@include file="../layout/footer.jsp" %>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous">

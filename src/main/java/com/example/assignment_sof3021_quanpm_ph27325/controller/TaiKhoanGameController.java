@@ -23,7 +23,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
 @Controller
-@RequestMapping
+@RequestMapping("/crud")
 public class TaiKhoanGameController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class TaiKhoanGameController {
         model.addAttribute("pageTK", pageTK);
     }
 
-    @GetMapping
+    @GetMapping("/tk-game")
     public String view(Model model,
                        @RequestParam(value = "findByName", required = false) String tenTK,
                        @RequestParam(value = "page", defaultValue = "1") int page,
@@ -58,7 +58,7 @@ public class TaiKhoanGameController {
         return "crud-tk-game/tk-game";
     }
 
-    @GetMapping(params = "findRange")
+    @GetMapping(value = "/tk-game", params = "findRange")
     public String findByRange(Model model,
                               @RequestParam(value = "min", required = false) BigDecimal min,
                               @RequestParam(value = "max", required = false) BigDecimal max,
@@ -77,7 +77,7 @@ public class TaiKhoanGameController {
     ) {
         session.removeAttribute("mess");
         session.removeAttribute("tk");
-        return "redirect:/";
+        return "redirect:/crud/tk-game";
     }
 
 //    @GetMapping("/detail/{maTK}")
@@ -90,7 +90,7 @@ public class TaiKhoanGameController {
 //        return "trang-chu/detail";
 //    }
 
-    @PostMapping(value = "/crud/tk-game/add")
+    @PostMapping(value = "/tk-game/add")
     public String addTK(Model model,
                         @RequestParam(name = "ma") String ma,
                         @RequestParam(name = "ten") String ten,
@@ -109,10 +109,10 @@ public class TaiKhoanGameController {
 //        loadTbl(model, page);
 //        model.addAttribute("mess", "Thêm Thành Công.");
 //        return "crud-tk-game/tk-game";
-        return "redirect:/";
+        return "redirect:/crud/tk-game";
     }
 
-    @GetMapping("/crud/delete/{idTK}")
+    @GetMapping("/delete/{idTK}")
     public String deleteTK(@PathVariable("idTK") UUID id, Model model,
                            HttpSession session) throws IOException {
         session.removeAttribute("mess");
@@ -123,10 +123,10 @@ public class TaiKhoanGameController {
 //        model.addAttribute("mess", service.deleteTK(tk));
 //        return "crud-tk-game/tk-game";
         session.setAttribute("mess", service.deleteTK(tk));
-        return "redirect:/";
+        return "redirect:/crud/tk-game";
     }
 
-    @GetMapping("/crud/detail/{idTK}")
+    @GetMapping("/detail/{idTK}")
     public String detailTK(@PathVariable("idTK") UUID id, Model model,
                            @RequestParam(value = "page", defaultValue = "1") int page,
                            HttpSession session) {
@@ -138,7 +138,7 @@ public class TaiKhoanGameController {
         return "crud-tk-game/tk-game";
     }
 
-    @PostMapping("/crud/tk-game/update")
+    @PostMapping("/tk-game/update")
     public String updateTK(Model model,
                            @RequestParam(name = "ma") String ma,
                            @RequestParam(name = "ten") String ten,
@@ -170,7 +170,7 @@ public class TaiKhoanGameController {
 
         }
 //        return "crud-tk-game/tk-game";
-        return "redirect:/";
+        return "redirect:/crud/tk-game";
     }
 
     public void copyImg(MultipartFile anh, String fileName) {
