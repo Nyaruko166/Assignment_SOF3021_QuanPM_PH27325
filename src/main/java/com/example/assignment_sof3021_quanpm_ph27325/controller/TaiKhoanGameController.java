@@ -2,7 +2,11 @@ package com.example.assignment_sof3021_quanpm_ph27325.controller;
 
 import com.example.assignment_sof3021_quanpm_ph27325.model.TaiKhoanGame;
 import com.example.assignment_sof3021_quanpm_ph27325.service.ITaiKhoanGameService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -16,7 +20,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -28,25 +31,53 @@ public class TaiKhoanGameController {
 
     private TaiKhoanGame tk = new TaiKhoanGame();
 
-    private void loadTbl(Model model) {
-        List<TaiKhoanGame> lstTK = service.getAll();
-        model.addAttribute("lstTK", lstTK);
+    private void loadTbl(Model model, int page) {
+        if (page < 1) page = 1;
+        Pageable pageable = PageRequest.of(page - 1, 2);
+        Page<TaiKhoanGame> pageTK = service.getAll(pageable);
+        model.addAttribute("pageTK", pageTK);
     }
 
     @GetMapping
     public String view(Model model,
                        @RequestParam(value = "findByName", required = false) String tenTK,
-                       @RequestParam(value = "min", required = false) BigDecimal min,
-                       @RequestParam(value = "max", required = false) BigDecimal max) {
-        List<TaiKhoanGame> lstTK;
+                       @RequestParam(value = "page", defaultValue = "1") int page,
+                       HttpSession session
+    ) {
+        Page<TaiKhoanGame> pageTK;
+        if (page < 1) page = 1;
+        Pageable pageable = PageRequest.of(page - 1, 2);
+//        List<TaiKhoanGame> lstTK;
         if (tenTK == null || tenTK.isBlank()) {
-            lstTK = service.getAll();
+            pageTK = service.getAll(pageable);
         } else {
-            lstTK = service.findByTenContains(tenTK);
+            pageTK = service.findByTenContains(tenTK, pageable);
         }
-        model.addAttribute("lstTK", lstTK);
+        model.addAttribute("pageTK", pageTK);
 //        return "trang-chu/index";
         return "crud-tk-game/tk-game";
+    }
+
+    @GetMapping(params = "findRange")
+    public String findByRange(Model model,
+                              @RequestParam(value = "min", required = false) BigDecimal min,
+                              @RequestParam(value = "max", required = false) BigDecimal max,
+                              @RequestParam(value = "page", defaultValue = "1") int page) {
+        Page<TaiKhoanGame> pageTK;
+        if (page < 1) page = 1;
+        Pageable pageable = PageRequest.of(page - 1, 2);
+        pageTK = service.findByDonGiaBetween(min, max, pageable);
+        model.addAttribute("pageTK", pageTK);
+        return "crud-tk-game/tk-game";
+    }
+
+    @GetMapping("/reset")
+    public String rest(Model model,
+                       HttpSession session
+    ) {
+        session.removeAttribute("mess");
+        session.removeAttribute("tk");
+        return "redirect:/";
     }
 
 //    @GetMapping("/detail/{maTK}")
@@ -66,30 +97,44 @@ public class TaiKhoanGameController {
                         @RequestParam(name = "soLuong") Integer soLuong,
                         @RequestParam(name = "donGia") BigDecimal donGia,
                         @RequestParam(name = "server") String server,
-                        @RequestParam(name = "anh") MultipartFile anh
+                        @RequestParam(name = "anh") MultipartFile anh,
+                        HttpSession session
     ) {
+        session.removeAttribute("mess");
+        session.removeAttribute("tk");
         String fileName = StringUtils.cleanPath(anh.getOriginalFilename());
         copyImg(anh, fileName);
         service.saveTK(new TaiKhoanGame(null, ma, ten, soLuong, donGia, server, "/img/" + fileName));
-        loadTbl(model);
-        model.addAttribute("mess", "Thêm Thành Công.");
-        return "crud-tk-game/tk-game";
+        session.setAttribute("mess", "Thêm Thành Công.");
+//        loadTbl(model, page);
+//        model.addAttribute("mess", "Thêm Thành Công.");
+//        return "crud-tk-game/tk-game";
+        return "redirect:/";
     }
 
     @GetMapping("/crud/delete/{idTK}")
-    public String deleteTK(@PathVariable("idTK") UUID id, Model model) throws IOException {
+    public String deleteTK(@PathVariable("idTK") UUID id, Model model,
+                           HttpSession session) throws IOException {
+        session.removeAttribute("mess");
+        session.removeAttribute("tk");
         TaiKhoanGame tk = service.findByMa(id);
         Files.deleteIfExists(Path.of("./src/main/webapp" + tk.getAnh()));
-        loadTbl(model);
-        model.addAttribute("mess", service.deleteTK(tk));
-        return "crud-tk-game/tk-game";
+//        loadTbl(model, page);
+//        model.addAttribute("mess", service.deleteTK(tk));
+//        return "crud-tk-game/tk-game";
+        session.setAttribute("mess", service.deleteTK(tk));
+        return "redirect:/";
     }
 
     @GetMapping("/crud/detail/{idTK}")
-    public String detailTK(@PathVariable("idTK") UUID id, Model model) {
+    public String detailTK(@PathVariable("idTK") UUID id, Model model,
+                           @RequestParam(value = "page", defaultValue = "1") int page,
+                           HttpSession session) {
+        session.removeAttribute("mess");
+        session.removeAttribute("tk");
         tk = service.findByMa(id);
-        loadTbl(model);
-        model.addAttribute("tk", tk);
+        loadTbl(model, page);
+        session.setAttribute("tk", tk);
         return "crud-tk-game/tk-game";
     }
 
@@ -100,9 +145,12 @@ public class TaiKhoanGameController {
                            @RequestParam(name = "soLuong") Integer soLuong,
                            @RequestParam(name = "donGia") BigDecimal donGia,
                            @RequestParam(name = "server") String server,
-                           @RequestParam(name = "anh") MultipartFile anh) throws IOException {
+                           @RequestParam(name = "anh") MultipartFile anh,
+                           HttpSession session) throws IOException {
+        session.removeAttribute("mess");
+        session.removeAttribute("tk");
         if (tk.getId() == null) {
-            model.addAttribute("mess", "Vui lòng chọn mục muốn sửa !!!");
+            session.setAttribute("mess", "Vui lòng chọn mục muốn sửa !!!");
         } else {
             tk.setMa(ma);
             tk.setTen(ten);
@@ -116,12 +164,13 @@ public class TaiKhoanGameController {
                 copyImg(anh, fileName);
             }
             if (service.saveTK(tk)) {
-                loadTbl(model);
-                model.addAttribute("mess", "Sửa Thành Công.");
+//                loadTbl(model, page);
+                session.setAttribute("mess", "Sửa Thành Công.");
             }
 
         }
-        return "crud-tk-game/tk-game";
+//        return "crud-tk-game/tk-game";
+        return "redirect:/";
     }
 
     public void copyImg(MultipartFile anh, String fileName) {
@@ -139,5 +188,4 @@ public class TaiKhoanGameController {
             e.printStackTrace();
         }
     }
-
 }

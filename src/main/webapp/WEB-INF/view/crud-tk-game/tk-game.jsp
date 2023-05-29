@@ -33,9 +33,24 @@
         <%--            </div>--%>
         <%--        </div>--%>
         <%--    </div>--%>
-        <c:if test="${not empty mess}">
+        <c:if test="${not empty sessionScope.mess}">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>${sessionScope.mess}</strong>
+                <a class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                   style="margin: 0" href="http://localhost:27325"></a>
+            </div>
+        </c:if>
+        <c:if test="${pageTK.isEmpty()}">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>${mess}</strong>
+                <strong>Không tìm thấy bản ghi nào</strong>
+                <a class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                   style="margin: 0" href="http://localhost:27325"></a>
+            </div>
+        </c:if>
+        <c:if test="${not pageTK.isEmpty() and param.size()!=0 and param.page <= 1
+        and not param.containsKey('page')}">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Tìm thấy ${pageTK.getTotalElements()} bản ghi</strong>
                 <a class="btn-close" data-bs-dismiss="alert" aria-label="Close"
                    style="margin: 0" href="http://localhost:27325"></a>
             </div>
@@ -91,7 +106,7 @@
                     <div class="col-10">
                         <input style="margin-left: 10px" type="text" class="form-control" id="findByName"
                                name="findByName"
-                               placeholder="Nhập tên muốn tìm">
+                               placeholder="Nhập tên muốn tìm" value="${param.findByName}">
                     </div>
                     <div class="col-2">
                         <button style="margin-left: 10px" type="submit" class="btn btn-success">Search</button>
@@ -102,17 +117,17 @@
         <div class="col-6">
             <form name="findByRange">
                 <div class="row">
-                    <label for="findByRange" class="form-label">Tìm kiếm theo khoảng:</label>
+                    <label for="findByRange" class="form-label">Tìm kiếm theo khoảng giá:</label>
                     <div class="col-5">
-                        <input type="number" class="form-control" id="findByName" name="min"
-                               placeholder="Giá trị nhỏ nhất">
+                        <input type="number" class="form-control" id="findByRange" name="min"
+                               placeholder="Giá trị nhỏ nhất" value="${param.min}">
                     </div>
                     <div class="col-5">
-                        <input type="number" class="form-control" id="findByName" name="max"
-                               placeholder="Giá trị lớn nhất">
+                        <input type="number" class="form-control" id="findByRange" name="max"
+                               placeholder="Giá trị lớn nhất" value="${param.max}">
                     </div>
                     <div class="col-2">
-                        <button type="submit" class="btn btn-success">Search</button>
+                        <button type="submit" class="btn btn-success" name="findRange">Search</button>
                     </div>
                 </div>
             </form>
@@ -125,45 +140,85 @@
         <button form="suck" formaction="/crud/tk-game/update" type="submit" class="btn btn-success" name="update"
                 style="margin: 0" onclick="return confirm('Bạn có muốn sửa?')">Sửa
         </button>
-        <a class="btn btn-success" name="reset" href="http://localhost:27325"
+        <a class="btn btn-success" name="reset" href="http://localhost:27325/reset"
            style="margin: 0">Reset
         </a>
     </div>
 </section>
-<section class="container">
-    <table class="table table-striped table-hover text-center">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Mã TK</th>
-            <th scope="col">Tên TK</th>
-            <th scope="col">Số lượng</th>
-            <th scope="col">Đơn Giá</th>
-            <th scope="col">Server</th>
-            <th scope="col">Ảnh</th>
-            <th scope="col">Chức Năng</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${lstTK}" var="x">
+<c:if test="${not pageTK.isEmpty()}">
+    <section class="container">
+        <table class="table table-striped table-hover text-center">
+            <thead>
             <tr>
-                <td>${x.id}</td>
-                <td>${x.ma}</td>
-                <td>${x.ten}</td>
-                <td>${x.soLuong}</td>
-                <td>${x.donGia}</td>
-                <td>${x.server}</td>
-                <td><img width="20%" height="20%" src="${x.anh}" class="img-thumbnail" alt="..."></td>
-                <td><a href="/crud/delete/${x.id}" class="btn btn-danger"
-                       onclick="return confirm('Bạn có muốn xoá?');">Xoá</a>
-                    <a href="/crud/detail/${x.id}" class="btn btn-info" id="detail"
-                    >Detail</a>
-                </td>
+                <th scope="col">Id</th>
+                <th scope="col">Mã TK</th>
+                <th scope="col">Tên TK</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Đơn Giá</th>
+                <th scope="col">Server</th>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Chức Năng</th>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-</section>
+            </thead>
+            <tbody>
+            <c:forEach items="${pageTK.getContent()}" var="x">
+                <tr>
+                    <td>${x.id}</td>
+                    <td>${x.ma}</td>
+                    <td>${x.ten}</td>
+                    <td>${x.soLuong}</td>
+                    <td>${x.donGia}</td>
+                    <td>${x.server}</td>
+                    <td><img width="20%" height="20%" src="${x.anh}" class="img-thumbnail" alt="..."></td>
+                    <td><a href="/crud/delete/${x.id}" class="btn btn-danger"
+                           onclick="return confirm('Bạn có muốn xoá?');">Xoá</a>
+                        <a href="/crud/detail/${x.id}" class="btn btn-info" id="detail"
+                        >Detail</a>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item ${pageTK.getNumber() + 1 > 1 ? '' : 'disabled'} ">
+                    <c:if test="${param.containsKey('findByName') or param.size() == 0}">
+                        <a class="page-link" href="?page=${pageTK.getNumber()}&findByName=${param.findByName}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </c:if>
+                    <c:if test="${param.containsKey('findRange')}">
+                        <a class="page-link"
+                           href="?page=${pageTK.getNumber()}&min=${param.min}&max=${param.max}&findRange=${param.findRange}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </c:if>
+                </li>
+                <li class="page-item"><p class="page-link" href="#">${pageTK.getNumber() + 1}
+                    / ${pageTK.getTotalPages()}</p>
+                </li>
+                <li class="page-item ${pageTK.getNumber() + 1 lt pageTK.getTotalPages() ? '' : 'disabled'}">
+                    <c:if test="${param.containsKey('findByName') or param.size() == 0}">
+                        <a class="page-link"
+                           href="?page=${pageTK.getNumber() + 2}&findByName=${param.findByName}"
+                           aria-label=" Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </c:if>
+                    <c:if test="${param.containsKey('findRange')}">
+                        <a class="page-link"
+                           href="?page=${pageTK.getNumber() + 2}&min=${param.min}&max=${param.max}&findRange=${param.findRange}"
+                           aria-label=" Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </c:if>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</c:if>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous">

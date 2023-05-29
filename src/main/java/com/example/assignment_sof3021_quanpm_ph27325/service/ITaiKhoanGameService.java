@@ -1,13 +1,14 @@
 package com.example.assignment_sof3021_quanpm_ph27325.service;
 
 import com.example.assignment_sof3021_quanpm_ph27325.model.TaiKhoanGame;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.UUID;
 
 public interface ITaiKhoanGameService {
-    List<TaiKhoanGame> getAll();
+    Page<TaiKhoanGame> getAll(Pageable pageable);
 
     TaiKhoanGame findByMa(UUID maTK);
 
@@ -15,8 +16,8 @@ public interface ITaiKhoanGameService {
 
     String deleteTK(TaiKhoanGame tk);
 
-    List<TaiKhoanGame> findByTenContains(String tenTK);
+    Page<TaiKhoanGame> findByTenContains(String tenTK, Pageable pageable);
 
-    List<TaiKhoanGame> findByDonGiaBetween(BigDecimal min, BigDecimal max);
+    Page<TaiKhoanGame> findByDonGiaBetween(BigDecimal min, BigDecimal max, Pageable pageable);
 
 }
