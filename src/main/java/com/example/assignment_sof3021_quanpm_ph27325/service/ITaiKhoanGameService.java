@@ -1,16 +1,15 @@
 package com.example.assignment_sof3021_quanpm_ph27325.service;
 
-import com.example.assignment_sof3021_quanpm_ph27325.model.TaiKhoanGame;
+import com.example.assignment_sof3021_quanpm_ph27325.entity.TaiKhoanGame;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 public interface ITaiKhoanGameService {
     Page<TaiKhoanGame> getAll(Pageable pageable);
 
-    TaiKhoanGame findByMa(UUID maTK);
+    TaiKhoanGame findByMa(Integer maTK);
 
     Boolean saveTK(TaiKhoanGame tk);
 

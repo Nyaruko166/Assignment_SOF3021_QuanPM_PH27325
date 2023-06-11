@@ -4,13 +4,23 @@ USE ASM_SOF3021
 GO
 CREATE TABLE TaiKhoanGame
 (
-    Id      UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    Id      INT PRIMARY KEY IDENTITY (1,1),
     Ma      VARCHAR(20) UNIQUE,
-    Ten     NVARCHAR(50)                 DEFAULT NULL,
+    Ten     NVARCHAR(50)   DEFAULT NULL,
     SoLuong INT,
-    DonGia  DECIMAL(20, 0)               DEFAULT 0,
+    DonGia  DECIMAL(20, 0) DEFAULT 0,
     Server  VARCHAR(10)  NOT NULL,
     Anh     VARCHAR(MAX) NOT NULL
+)
+
+CREATE TABLE TaiKhoan
+(
+    Id        INT PRIMARY KEY IDENTITY (1,1),
+    Username  VARCHAR(50),
+    Password  VARCHAR(50),
+    Email     VARCHAR(50),
+    Role      NVARCHAR(50),
+    TrangThai bit
 )
 
 INSERT INTO TaiKhoanGame (Ma, Ten, SoLuong, DonGia, Server, Anh)
@@ -27,5 +37,13 @@ VALUES ('TK001', N'Tl10+ | Honkai Star Rail Reroll account', 30, 10000, 'Asia',
        ('TK006', N'Tl40+ | Honkai Star Rail Reroll HSR acc gem', 1, 100000, 'Asia',
         '/img/tl40.jpg')
 
+INSERT INTO TaiKhoan (Username, Password, Email, Role, TrangThai)
+VALUES ('Nyaruko', 123123, N'occho1666@gmail.com', N'Admin', 1),
+       ('Nya', 123123, N'abcxyz@gmail.com', N'Khách Hàng', 0),
+       ('KhachHang', 123123, N'quanpmph27325@fpt.edu.vn', N'Khách Hàng', 1)
+
 SELECT *
 FROM TaiKhoanGame
+
+SELECT *
+FROM TaiKhoan

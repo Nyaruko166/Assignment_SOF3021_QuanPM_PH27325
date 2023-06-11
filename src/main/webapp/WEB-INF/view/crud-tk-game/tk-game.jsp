@@ -19,28 +19,6 @@
 <section class="container">
     <form id="suck" method="post" enctype="multipart/form-data" class="container" style="margin-bottom: 0px">
         <h1 class="title">Quản lý tài khoản</h1>
-        <%--    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>--%>
-        <%--    <div class="toast-container top-50 start-50 translate-middle">--%>
-        <%--        <div id="liveToast" class="toast align-items-center text-bg-secondary border-0" role="alert"--%>
-        <%--             aria-live="assertive"--%>
-        <%--             aria-atomic="true">--%>
-        <%--            <div class="toast-header">--%>
-        <%--                <img width="1%" height="1%" src="/img/nya.jpg" class="rounded me-2" alt="...">--%>
-        <%--                <strong class="me-auto">Thông Báo</strong>--%>
-        <%--                <small>Right now</small>--%>
-        <%--                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>--%>
-        <%--            </div>--%>
-        <%--            <div class="toast-body">--%>
-        <%--                Vcl luon--%>
-        <%--                <div class="mt-2 pt-2 border-top">--%>
-        <%--                    <button type="button" class="btn btn-primary btn-sm" id="confirm" onclick="alert()">OK--%>
-        <%--                    </button>--%>
-        <%--                    <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="toast" id="cancel">Cancel--%>
-        <%--                    </button>--%>
-        <%--                </div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--    </div>--%>
         <c:if test="${not empty sessionScope.mess}">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>${sessionScope.mess}</strong>

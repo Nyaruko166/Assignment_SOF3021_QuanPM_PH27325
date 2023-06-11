@@ -1,6 +1,6 @@
 package com.example.assignment_sof3021_quanpm_ph27325.controller;
 
-import com.example.assignment_sof3021_quanpm_ph27325.model.TaiKhoanGame;
+import com.example.assignment_sof3021_quanpm_ph27325.entity.TaiKhoanGame;
 import com.example.assignment_sof3021_quanpm_ph27325.service.ITaiKhoanGameService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/crud")
@@ -80,16 +79,6 @@ public class TaiKhoanGameController {
         return "redirect:/crud/tk-game";
     }
 
-//    @GetMapping("/detail/{maTK}")
-//    public String detailTK(Model model,
-//                           @PathVariable("maTK") UUID maTK) {
-//        TaiKhoanGame tk = service.findByMa(maTK);
-//        List<TaiKhoanGame> lstTK = service.getAll();
-//        model.addAttribute("lstTK", lstTK);
-//        model.addAttribute("tk", tk);
-//        return "trang-chu/detail";
-//    }
-
     @PostMapping(value = "/tk-game/add")
     public String addTK(Model model,
                         @RequestParam(name = "ma") String ma,
@@ -113,7 +102,7 @@ public class TaiKhoanGameController {
     }
 
     @GetMapping("/delete/{idTK}")
-    public String deleteTK(@PathVariable("idTK") UUID id, Model model,
+    public String deleteTK(@PathVariable("idTK") Integer id, Model model,
                            HttpSession session) throws IOException {
         session.removeAttribute("mess");
         session.removeAttribute("tk");
@@ -127,7 +116,7 @@ public class TaiKhoanGameController {
     }
 
     @GetMapping("/detail/{idTK}")
-    public String detailTK(@PathVariable("idTK") UUID id, Model model,
+    public String detailTK(@PathVariable("idTK") Integer id, Model model,
                            @RequestParam(value = "page", defaultValue = "1") int page,
                            HttpSession session) {
         session.removeAttribute("mess");

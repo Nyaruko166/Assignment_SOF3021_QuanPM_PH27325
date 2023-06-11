@@ -1,6 +1,6 @@
 package com.example.assignment_sof3021_quanpm_ph27325.service;
 
-import com.example.assignment_sof3021_quanpm_ph27325.model.TaiKhoanGame;
+import com.example.assignment_sof3021_quanpm_ph27325.entity.TaiKhoanGame;
 import com.example.assignment_sof3021_quanpm_ph27325.repository.ITaiKhoanGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Service
 public class TaiKhoanGameService implements ITaiKhoanGameService {
@@ -34,7 +33,7 @@ public class TaiKhoanGameService implements ITaiKhoanGameService {
     }
 
     @Override
-    public TaiKhoanGame findByMa(UUID maTK) {
+    public TaiKhoanGame findByMa(Integer maTK) {
         return repository.findById(maTK).orElse(null);
     }
 
@@ -47,4 +46,14 @@ public class TaiKhoanGameService implements ITaiKhoanGameService {
     public Page<TaiKhoanGame> findByDonGiaBetween(BigDecimal min, BigDecimal max, Pageable pageable) {
         return repository.findByDonGiaBetween(min, max, pageable);
     }
+
+
+//    public static void main(String[] args) {
+//        ITaiKhoanService service = new TaiKhoanService();
+//        List<TaiKhoan> lstTK = service.getAll();
+//        for (TaiKhoan x : lstTK) {
+//            System.out.println(x.toString());
+//
+//        }
+//    }
 }

@@ -25,7 +25,8 @@
                 <%--                <li class="nav-item">--%>
                 <%--                </li>--%>
                 <div id="nav1" class="navbar-nav">
-                    <a class="nav-link" href="#login">Đăng nhập</a>
+                    <c:if test="${empty user}"><a class="nav-link" href="/dang-nhap">Đăng nhập</a></c:if>
+                    <c:if test="${not empty user}"><a class="nav-link" href="/thong-tin">Thông Tin Cá Nhân</a></c:if>
                     <a class="nav-link" href="http://localhost:27325/crud/tk-game">Tài Khoản
                         Game</a>
                     <a href="#cart"

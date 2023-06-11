@@ -1,4 +1,4 @@
-package com.example.assignment_sof3021_quanpm_ph27325.model;
+package com.example.assignment_sof3021_quanpm_ph27325.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Entity
 @Table(name = "taikhoangame")
@@ -16,9 +15,9 @@ import java.util.UUID;
 public class TaiKhoanGame {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Integer id;
 
     @Column(name = "ma")
     private String ma;
