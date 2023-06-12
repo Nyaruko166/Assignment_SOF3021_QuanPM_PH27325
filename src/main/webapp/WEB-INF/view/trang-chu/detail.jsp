@@ -21,49 +21,52 @@
 
 <section class="container">
     <h3 class="title">Sản Phẩm Detail</h3>
-    <div class="card mb-3 box" style="max-width: 100%">
-        <div class="row g-0">
-            <div class="col-md-6">
-                <img
-                        src="${tk.anh}"
-                        class="img-fluid rounded-start"
-                        alt="..."
-                />
-            </div>
-            <div class="col-md-6">
-                <div style="text-align: left" class="card-body">
-                    <h2 style="margin-top: 20px" class="card-title">${tk.ten}</h2>
-                    <div style="margin-top: 10px" class="detail-body">
-                        <h6>Giá:</h6>
-                        <h4>${tk.donGia} VNĐ</h4>
-                    </div>
-                    <div>
-                        <h6 style="margin-top: 10px" class="font-14">Số lượng</h6>
-                        <div class="d-flex">
-                            <input
-                                    type="number"
-                                    min="1"
-                                    value="1"
-                                    class="form-control"
-                                    style="width: 90px"
-                            />
-                            <a href="" class="btn btn-outline-success">
-                                Add to cart
-                            </a>
+    <form action="/cart/add/${tk.id}" method="post">
+        <div class="card mb-3 box" style="max-width: 100%">
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <img
+                            src="${tk.anh}"
+                            class="img-fluid rounded-start"
+                            alt="..."
+                    />
+                </div>
+                <div class="col-md-6">
+                    <div style="text-align: left" class="card-body">
+                        <h2 style="margin-top: 20px" class="card-title">${tk.ten}</h2>
+                        <div style="margin-top: 10px" class="detail-body">
+                            <h6>Giá:</h6>
+                            <h4>${tk.donGia} VNĐ</h4>
                         </div>
-                    </div>
-                    <div style="margin-top: 10px">
-                        <h6>Server:</h6>
-                        <p>${tk.server}</p>
-                    </div>
-                    <div style="margin-top: 10px">
-                        <h6>Số lượng tồn:</h6>
-                        <p>${tk.soLuong}</p>
+                        <div>
+                            <h6 style="margin-top: 10px" class="font-14">Số lượng</h6>
+                            <div class="d-flex">
+                                <input
+                                        type="number"
+                                        min="1"
+                                        value="1"
+                                        class="form-control"
+                                        style="width: 90px"
+                                        name="soLuong"
+                                />
+                                <button type="submit" class="btn btn-outline-success">
+                                    Thêm vào giỏ
+                                </button>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px">
+                            <h6>Server:</h6>
+                            <p>${tk.server}</p>
+                        </div>
+                        <div style="margin-top: 10px">
+                            <h6>Số lượng tồn:</h6>
+                            <p>${tk.soLuong}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </section>
 <section class="container">
     <h2 class="title">Các sản phẩm tương tự</h2>

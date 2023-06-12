@@ -29,7 +29,7 @@
                     <c:if test="${not empty user}"><a class="nav-link" href="/thong-tin">Thông Tin Cá Nhân</a></c:if>
                     <a class="nav-link" href="http://localhost:27325/crud/tk-game">Tài Khoản
                         Game</a>
-                    <a href="#cart"
+                    <a href="/cart"
                     >
                         <button type="button" class="btn btn-outline-secondary">
                             <i class="fa-solid fa-cart-shopping"></i>
