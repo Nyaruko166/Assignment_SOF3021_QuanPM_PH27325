@@ -9,4 +9,5 @@ public interface IGioHangService {
 
     void updateCart(Integer idTK, Integer soLuong);
 
+    void deleteCart(Integer idTK);
 }

@@ -71,22 +71,25 @@
 <section class="container">
     <h2 class="title">Các sản phẩm tương tự</h2>
     <div class="row" style="margin: 0 auto">
-        <c:forEach items="${lstTK}" var="x" varStatus="y">
-            <div class="col-4" style="margin-bottom: 40px;display: flex;justify-content: center;">
-                <a href="/detail/${x.id}" style="color: black; text-decoration: none">
-                    <div class="card" style="width: 18rem;">
-                        <img src="${x.anh}" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">${x.ten}</h5>
-                            <div style="font-weight: bold">
-                                <p class="card-text">Server: ${x.server}</p>
-                                <p class="card-text">${x.donGia} VNĐ</p>
-                            </div>
+        <% for (int i = 0; i < 4; i += 1) { %>
+        <div class="col-3" style="margin-bottom: 40px;display: flex;justify-content: center;">
+            <a href="/detail/${lstTK.get(i).id}" style="color: black; text-decoration: none">
+                <div class="card" style="width: 18rem;">
+                    <img src="${lstTK.get(i).anh}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">${lstTK.get(i).ten}</h5>
+                        <div style="font-weight: bold">
+                            <p class="card-text">Server: ${lstTK.get(i).server}</p>
+                            <p class="card-text">${lstTK.get(i).donGia} VNĐ</p>
                         </div>
                     </div>
-                </a>
-            </div>
-        </c:forEach>
+                </div>
+            </a>
+        </div>
+        <% } %>
+        <%--        <c:forEach items="${lstTK}" var="x" varStatus="y">--%>
+
+        <%--        </c:forEach>--%>
     </div>
 </section>
 

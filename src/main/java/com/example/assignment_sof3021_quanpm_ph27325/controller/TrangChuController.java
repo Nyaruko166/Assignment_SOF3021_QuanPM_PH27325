@@ -1,7 +1,7 @@
 package com.example.assignment_sof3021_quanpm_ph27325.controller;
 
 import com.example.assignment_sof3021_quanpm_ph27325.entity.TaiKhoanGame;
-import com.example.assignment_sof3021_quanpm_ph27325.repository.ITaiKhoanGameRepository;
+import com.example.assignment_sof3021_quanpm_ph27325.repository.TaiKhoanGameRepository;
 import com.example.assignment_sof3021_quanpm_ph27325.service.ITaiKhoanGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class TrangChuController {
     private ITaiKhoanGameService service;
 
     @Autowired
-    private ITaiKhoanGameRepository service1;
+    private TaiKhoanGameRepository service1;
 
     @GetMapping("/detail/{maTK}")
     public String detailTK(Model model,

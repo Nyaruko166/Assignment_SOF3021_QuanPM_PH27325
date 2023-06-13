@@ -1,7 +1,7 @@
 package com.example.assignment_sof3021_quanpm_ph27325.service;
 
 import com.example.assignment_sof3021_quanpm_ph27325.entity.TaiKhoan;
-import com.example.assignment_sof3021_quanpm_ph27325.repository.ITaiKhoanRepository;
+import com.example.assignment_sof3021_quanpm_ph27325.repository.TaiKhoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class TaiKhoanService implements ITaiKhoanService {
 
     @Autowired
-    private ITaiKhoanRepository repository;
+    private TaiKhoanRepository repository;
 
     @Override
     public List<TaiKhoan> getAll() {

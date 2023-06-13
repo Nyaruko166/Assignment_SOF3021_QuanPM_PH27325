@@ -1,7 +1,7 @@
 package com.example.assignment_sof3021_quanpm_ph27325.service;
 
 import com.example.assignment_sof3021_quanpm_ph27325.entity.TaiKhoanGame;
-import com.example.assignment_sof3021_quanpm_ph27325.repository.ITaiKhoanGameRepository;
+import com.example.assignment_sof3021_quanpm_ph27325.repository.TaiKhoanGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class TaiKhoanGameService implements ITaiKhoanGameService {
 
     @Autowired
-    private ITaiKhoanGameRepository repository;
+    private TaiKhoanGameRepository repository;
 
     @Override
     public String deleteTK(TaiKhoanGame tk) {

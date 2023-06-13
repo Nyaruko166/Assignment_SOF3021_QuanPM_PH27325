@@ -33,7 +33,7 @@
                     >
                         <button type="button" class="btn btn-outline-secondary">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="badge text-bg-secondary">0</span>
+                            <span class="badge text-bg-secondary">${cart.size()}</span>
                         </button>
                     </a
                     >

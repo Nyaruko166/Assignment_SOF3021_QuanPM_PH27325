@@ -1,0 +1,517 @@
+.border-1-form {
+    width: 90%;
+}
+
+.link-header {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.link-header:hover {
+    text-decoration: underline;
+}
+
+.w-header {
+    width: 90%;
+}
+
+.name-left {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-decoration: none;
+}
+
+.border-name-java {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    padding-top: -20px !important;
+}
+
+.name-right {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-decoration: none;
+}
+
+.header-home {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.border-header-home {
+    height: 100%;
+    width: 320px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding-left: 25px;
+    border: none;
+}
+
+.border-header {
+    display: flex;
+    justify-content: center;
+    height: 65px;
+}
+
+.border-option-header {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.text-header-option {
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.text-header-option:hover {
+    color: #0abde3;
+}
+
+.border-icon-header {
+    display: flex;
+    align-items: center;
+}
+
+.border-number-icon {
+    color: black;
+    border: 2px solid #0abde3;
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    border-radius: 300px;
+    color: #0abde3;
+}
+
+.detailDelete {
+    font-size: 18px;
+    color: black;
+}
+
+.detailDelete:hover {
+    color: #0abde3;
+}
+
+.border-java-login {
+    border: 2px solid white;
+    height: 65px;
+}
+
+.border-all-login {
+    height: 400px;
+}
+
+.text-down {
+    margin-top: 200px;
+}
+
+.text-forgot-password {
+    text-decoration: none;
+    color: #0abde3;
+}
+
+.text-forgot-password:hover {
+    color: red;
+}
+
+.text-header-center {
+    font-family: sans-serif;
+    font-size: 50px;
+    color: #0abde3;
+    font-style: italic;
+    border: none;
+    text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0, 0, 0, 0.15);
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.w-5 {
+    width: 5%;
+}
+
+.product-offer .offer-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(61, 70, 77, 0.5);
+    z-index: 1;
+}
+
+.product-offer:hover img {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.product-offer img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.product-offer {
+    position: relative;
+    overflow: hidden;
+}
+
+.border-service {
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-item {
+    transition: .5s;
+}
+
+.product-item:hover {
+    box-shadow: 0 0 30px #DDDDDD;
+}
+
+.product-item:hover .product-action {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.product-item:hover .product-action a.btn:first-child {
+    opacity: 1;
+    margin-top: 0;
+    transition: .3s 0s;
+}
+
+.product-item:hover .product-action a.btn:nth-child(2) {
+    opacity: 1;
+    margin-top: 0;
+    transition: .3s .05s;
+}
+
+.product-item:hover .product-action a.btn:nth-child(3) {
+    opacity: 1;
+    margin-top: 0;
+    transition: .3s .1s;
+}
+
+.product-item:hover .product-action a.btn:nth-child(4) {
+    opacity: 1;
+    margin-top: 0;
+    transition: .3s .15s;
+}
+
+.product-item .product-img img {
+    transition: .5s;
+}
+
+.product-item:hover .product-img img {
+    transform: scale(1.2);
+}
+
+.product-item .btn:hover {
+    color: #0abde3 !important;
+}
+
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-action {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+}
+
+.product-action a.btn {
+    position: relative;
+    margin: 0 3px;
+    margin-top: 100px;
+    opacity: 0;
+}
+
+.height-signin {
+    height: 100%;
+    margin-top: -28px;
+}
+
+.witdh-signin-left {
+    /* width: 35%; */
+    background-color: #41d2f2;
+}
+
+@media (max-width: 767px) {
+    .witdh-signin-left {
+        display: none;
+    }
+}
+
+.border-name-shop {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.content-signin-smartshop {
+    font-size: 30px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.witdh-signin-right {
+    /* width: 65%; */
+    display: flex;
+    justify-content: center;
+    background-color: white !important;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+.flex-column-reverse {
+    flex-direction: column-reverse !important;
+}
+
+.border-form-signin {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.border-right-signin {
+    margin-top: 100px;
+    width: 45%;
+}
+
+.header-signin {
+    font-weight: bold;
+    font-size: 25px;
+    font-family: "Roboto", sans-serif;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.title-signin {
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+.input-signin {
+    font-size: 14px;
+    color: black;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 13px 12px;
+    background-color: #eceff1;
+    /* background-color: #0abde3; */
+    box-shadow: inset 0 1px 0 0 #cfd8dc;
+    width: 100%;
+    /* margin-bottom: 17px; */
+}
+
+.link-signup {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.link-signup:hover {
+    color: red;
+    text-decoration: none;
+}
+
+
+.btn-signin {
+    height: 50px;
+    font-size: 16px;
+    border-radius: 4px;
+    color: black;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background: #37cff1 !important;
+}
+
+.dash {
+    color: #cfd8dc;
+    /* margin-top: 1px; */
+    height: 12px;
+    /* margin-left: 12px; */
+}
+
+.signin-with {
+    font-size: 17px;
+    color: black;
+}
+
+.d-inline-flex {
+    display: inline-flex !important;
+}
+
+.btn-facebook {
+    color: white;
+    background-color: #3779ea;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: none;
+    width: 130px;
+}
+
+.btn-google {
+    color: white;
+    background-color: red;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: none;
+    width: 130px;
+}
+
+.border-content-down-signin {
+    display: flex;
+    justify-content: center;
+    height: 80px;
+}
+
+.err-input {
+    color: red;
+    font-size: 13px;
+    text-align: right;
+    height: 19.5px;
+}
+
+.note-password {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: red;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel.pointer-event {
+    touch-action: pan-y;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    height: 100%;
+    margin-right: -100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease-in-out;
+}
+
+.btn-add-to-cart {
+    font-size: 18px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #41d2f2;
+    background-color: white;
+    color: #41d2f2;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #41d2f2;
+    color: black;
+    transition: ease-in-out 0.3s;
+}
+
+.border-title-statistical {
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: #fff;
+}
+
+.border-statistical {
+    border-radius: 10px !important;
+    height: 200px;
+}
+
+.border-filter-statistical {
+    border: 2px solid #41d2f2;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.btn-add-quantity {
+    border-radius: 5px;
+    background-color: white;
+    color: #41d2f2;
+    border: 1px solid #41d2f2;
+}
+
+.btn-add-quantity:hover {
+    background-color: #41d2f2;
+    color: black;
+    transition: all 0.3s;
+}

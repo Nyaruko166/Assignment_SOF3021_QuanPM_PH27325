@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigDecimal;
 
-public interface ITaiKhoanGameRepository extends JpaRepository<TaiKhoanGame, Integer> {
+public interface TaiKhoanGameRepository extends JpaRepository<TaiKhoanGame, Integer> {
 
     Page<TaiKhoanGame> findByTenContains(String tenTK, Pageable pageable);
 

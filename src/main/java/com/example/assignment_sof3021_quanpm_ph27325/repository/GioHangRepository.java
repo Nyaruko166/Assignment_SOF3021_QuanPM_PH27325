@@ -1,4 +1,4 @@
-package com.example.assignment_sof3021_quanpm_ph27325.entity;
+package com.example.assignment_sof3021_quanpm_ph27325.repository;
 
 import lombok.Getter;
 import lombok.Setter;

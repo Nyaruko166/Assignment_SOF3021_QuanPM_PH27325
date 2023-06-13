@@ -2,6 +2,8 @@ CREATE DATABASE ASM_SOF3021
 GO
 USE ASM_SOF3021
 GO
+
+
 CREATE TABLE TaiKhoanGame
 (
     Id      INT PRIMARY KEY IDENTITY (1,1),
@@ -13,6 +15,25 @@ CREATE TABLE TaiKhoanGame
     Anh     VARCHAR(MAX) NOT NULL
 )
 
+CREATE TABLE HoaDonChiTiet
+(
+    Id        INT PRIMARY KEY IDENTITY (1,1),
+    IdHD      INT,
+    IdTK      INT,
+    SoLuong   INT,
+    DonGia    DECIMAL(20, 0),
+    ThanhTien DECIMAL(20, 0),
+    NgayTao   DATE
+)
+
+CREATE TABLE HoaDon
+(
+    Id            INT PRIMARY KEY IDENTITY (1,1),
+    TongTien      DECIMAL(20, 0),
+    TenKhachHang  NVARCHAR(20),
+    NgayThanhToan DATE
+)
+
 CREATE TABLE TaiKhoan
 (
     Id        INT PRIMARY KEY IDENTITY (1,1),
@@ -22,6 +43,11 @@ CREATE TABLE TaiKhoan
     Role      NVARCHAR(50),
     TrangThai bit
 )
+
+ALTER TABLE HoaDonChiTiet
+    ADD FOREIGN KEY (IdHD) REFERENCES HoaDon (id);
+ALTER TABLE HoaDonChiTiet
+    ADD FOREIGN KEY (IdTK) REFERENCES TaiKhoanGame (id);
 
 INSERT INTO TaiKhoanGame (Ma, Ten, SoLuong, DonGia, Server, Anh)
 VALUES ('TK001', N'Tl10+ | Honkai Star Rail Reroll account', 30, 10000, 'Asia',
