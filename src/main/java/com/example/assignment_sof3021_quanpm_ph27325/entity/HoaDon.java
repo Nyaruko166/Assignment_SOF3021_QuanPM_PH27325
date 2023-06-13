@@ -1,10 +1,7 @@
 package com.example.assignment_sof3021_quanpm_ph27325.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -13,6 +10,7 @@ import java.sql.Date;
 @Table(name = "hoadon")
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class HoaDon {

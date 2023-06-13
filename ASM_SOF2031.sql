@@ -41,7 +41,7 @@ CREATE TABLE TaiKhoan
     Password  VARCHAR(50),
     Email     VARCHAR(50),
     Role      NVARCHAR(50),
-    TrangThai bit
+    TrangThai BIT
 )
 
 ALTER TABLE HoaDonChiTiet
