@@ -64,7 +64,7 @@ public class TaiKhoanGameController {
                               @RequestParam(value = "page", defaultValue = "1") int page) {
         Page<TaiKhoanGame> pageTK;
         if (page < 1) page = 1;
-        Pageable pageable = PageRequest.of(page - 1, 2);
+        Pageable pageable = PageRequest.of(page - 1, 4);
         pageTK = service.findByDonGiaBetween(min, max, pageable);
         model.addAttribute("pageTK", pageTK);
         return "quan-tri/tk-game";

@@ -50,18 +50,29 @@ ALTER TABLE HoaDonChiTiet
     ADD FOREIGN KEY (IdTK) REFERENCES TaiKhoanGame (id);
 
 INSERT INTO TaiKhoanGame (Ma, Ten, SoLuong, DonGia, Server, Anh)
-VALUES ('TK001', N'Tl10+ | Honkai Star Rail Reroll account', 30, 10000, 'Asia',
+VALUES ('TK001', N'Tl10+ | Honkai Star Rail Reroll account', 123, 10000, 'Asia',
         '/img/tl10.jpg'),
-       ('TK002', N'TL15+ | Honkai Star Rail Reroll account', 20, 15000, 'EU',
+       ('TK002', N'TL15+ | Honkai Star Rail Reroll account', 512, 15000, 'EU',
         '/img/tl15.jpg'),
-       ('TK003', N'TL20+ | Honkai Star Rail Reroll HSR acc gem', 6, 25000, 'Asia',
+       ('TK003', N'TL20+ | Honkai Star Rail Reroll HSR acc gem', 125, 25000, 'Asia',
         '/img/tl20.jpg'),
-       ('TK004', N'TL25+ | Honkai Star Rail HSR Reroll account', 4, 55000, 'US',
+       ('TK004', N'TL25+ | Honkai Star Rail HSR Reroll account', 245, 55000, 'US',
         '/img/tl25.jpg'),
-       ('TK005', N'TL30+ | Honkai Star Rail Reroll HSR acc gem', 2, 70000, 'Asia',
+       ('TK005', N'TL30+ | Honkai Star Rail Reroll HSR acc gem', 150, 70000, 'Asia',
         '/img/tl30.jpg'),
-       ('TK006', N'Tl40+ | Honkai Star Rail Reroll HSR acc gem', 1, 100000, 'Asia',
-        '/img/tl40.jpg')
+       ('TK006', N'Tl40+ | Honkai Star Rail Reroll HSR acc gem', 420, 100000, 'Asia',
+        '/img/tl40.jpg'),
+       ('TK007', N'Cl45+ | 11000+ Gems Honkai Impact 3 Reroll', 500, 100000, 'Sea',
+        '/img/hk45.jpg'),
+       ('TK008', N'Cl40+ | 19000+ Gems Honkai Impact 3 Reroll', 200, 200000, 'Japan',
+        '/img/hk40.jpg'),
+       ('TK009', N'Pc10+ | 100k Gems | Princess Connet Re:dive Starter account', 161, 40000, 'Japan',
+        '/img/pc10.jpg'),
+       ('TK010', N'Pc20+ | 145k+ Gems | Princess Connect Re:Dive Starter Accounts', 452, 80000, 'Japan',
+        '/img/pc20.jpg'),
+       ('TK011', N'Ba10+ | 30,000 Gems | Blue Archive Start Basic Gem', 621, 300000, 'Japan',
+        '/img/ba10.jpg')
+
 
 INSERT INTO TaiKhoan (Username, Password, Email, Role, TrangThai)
 VALUES ('Nyaruko', 123123, N'occho1666@gmail.com', N'Admin', 1),
