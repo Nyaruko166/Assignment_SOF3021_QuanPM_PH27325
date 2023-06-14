@@ -54,7 +54,7 @@ public class TaiKhoanGameController {
         }
         model.addAttribute("pageTK", pageTK);
 //        return "trang-chu/index";
-        return "crud-tk-game/tk-game";
+        return "quan-tri/tk-game";
     }
 
     @GetMapping(value = "/tk-game", params = "findRange")
@@ -67,7 +67,7 @@ public class TaiKhoanGameController {
         Pageable pageable = PageRequest.of(page - 1, 2);
         pageTK = service.findByDonGiaBetween(min, max, pageable);
         model.addAttribute("pageTK", pageTK);
-        return "crud-tk-game/tk-game";
+        return "quan-tri/tk-game";
     }
 
     @GetMapping("/reset")
@@ -97,7 +97,7 @@ public class TaiKhoanGameController {
         session.setAttribute("mess", "Thêm Thành Công.");
 //        loadTbl(model, page);
 //        model.addAttribute("mess", "Thêm Thành Công.");
-//        return "crud-tk-game/tk-game";
+//        return "quan-tri/tk-game";
         return "redirect:/crud/tk-game";
     }
 
@@ -110,7 +110,7 @@ public class TaiKhoanGameController {
         Files.deleteIfExists(Path.of("./src/main/webapp" + tk.getAnh()));
 //        loadTbl(model, page);
 //        model.addAttribute("mess", service.deleteTK(tk));
-//        return "crud-tk-game/tk-game";
+//        return "quan-tri/tk-game";
         session.setAttribute("mess", service.deleteTK(tk));
         return "redirect:/crud/tk-game";
     }
@@ -124,7 +124,7 @@ public class TaiKhoanGameController {
         tk = service.findByMa(id);
         loadTbl(model, page);
         session.setAttribute("tk", tk);
-        return "crud-tk-game/tk-game";
+        return "quan-tri/tk-game";
     }
 
     @PostMapping("/tk-game/update")
@@ -158,7 +158,7 @@ public class TaiKhoanGameController {
             }
 
         }
-//        return "crud-tk-game/tk-game";
+//        return "quan-tri/tk-game";
         return "redirect:/crud/tk-game";
     }
 

@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface IHoaDonService {
 
+    List<HoaDon> getAll();
+
     HoaDon themHoaDon(HoaDon hd);
 
     void themHoaDonChiTiet(List<GioHangView> lstTK, HoaDon hd);

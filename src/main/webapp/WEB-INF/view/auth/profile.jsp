@@ -40,7 +40,7 @@
                                         style="width: 80px"
                                 />
                                 <h5>${user.username}</h5>
-                                <p>Ded inside</p>
+                                <p>${user.role}</p>
                                 <i class="far fa-edit mb-5"></i>
                             </div>
                             <div class="col-md-8">
@@ -70,10 +70,6 @@
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-start">
-                                        <c:if test="${user.role == 'Admin'}">
-                                            <a class="btn btn-info" href="/crud/tk-game">Quản lý tài khoản game</a>
-                                        </c:if>
-
                                         <a class="btn btn-danger" style="margin-left: 20px" href="/dang-xuat"
                                         >Đăng Xuất</a
                                         >

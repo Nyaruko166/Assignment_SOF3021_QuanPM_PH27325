@@ -27,8 +27,17 @@
                 <div id="nav1" class="navbar-nav">
                     <c:if test="${empty user}"><a class="nav-link" href="/dang-nhap">Đăng nhập</a></c:if>
                     <c:if test="${not empty user}"><a class="nav-link" href="/thong-tin">Thông Tin Cá Nhân</a></c:if>
-                    <a class="nav-link" href="http://localhost:27325/crud/tk-game">Tài Khoản
-                        Game</a>
+                    <c:if test="${user.role == 'Admin'}">
+                        <a class="nav-link" href="/crud/tk-game">Quản lý tài khoản game</a>
+                    </c:if>
+                    <c:if test="${user.role == 'Admin'}">
+                        <a class="nav-link" href="/crud/hoa-don">Quản lý hoá đơn</a>
+                    </c:if>
+                    <c:if test="${user.role == 'Admin'}">
+                        <a class="nav-link" href="/thong-ke">Thống kê</a>
+                    </c:if>
+                    <%--                    <a class="nav-link" href="http://localhost:27325/crud/tk-game">Tài Khoản--%>
+                    <%--                        Game</a>--%>
                     <a href="/cart"
                     >
                         <button type="button" class="btn btn-outline-secondary">
