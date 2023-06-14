@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,18 +18,19 @@ public class ThongKeController {
     private ThongKeRepository repository;
 
     @GetMapping
-    public String view() {
-
-        return "quan-tri/thong-ke";
-    }
-
-    @PostMapping("/loc/thang")
-    public String locThang(Model model,
-                           @RequestParam("thang") Integer thang,
-                           @RequestParam("nam") Integer nam) {
-
-        List<ThongKe> lstTK = repository.banChayNhatTheoThang(thang, nam);
+    public String view(Model model) {
+        List<ThongKe> lstTK = repository.banChayNhatTheoThang();
         model.addAttribute("lstTK", lstTK);
         return "quan-tri/thong-ke";
     }
+
+//    @PostMapping("/loc/thang")
+//    public String locThang(Model model,
+//                           @RequestParam("thang") Integer thang,
+//                           @RequestParam("nam") Integer nam) {
+//
+//        List<ThongKe> lstTK = repository.banChayNhatTheoThang();
+//        model.addAttribute("lstTK", lstTK);
+//        return "quan-tri/thong-ke";
+//    }
 }

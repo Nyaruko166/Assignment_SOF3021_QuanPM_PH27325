@@ -2,7 +2,9 @@ package com.example.assignment_sof3021_quanpm_ph27325.controller;
 
 import com.example.assignment_sof3021_quanpm_ph27325.entity.HoaDon;
 import com.example.assignment_sof3021_quanpm_ph27325.entity.HoaDonChiTiet;
+import com.example.assignment_sof3021_quanpm_ph27325.entity.TaiKhoan;
 import com.example.assignment_sof3021_quanpm_ph27325.service.IHoaDonService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +22,23 @@ public class HoaDonController {
     private IHoaDonService service;
 
     @GetMapping
-    public String viewHD(Model model) {
+    public String viewHD(Model model, HttpSession session) {
 
-        List<HoaDon> lstHD = service.getAll();
-        model.addAttribute("lstHD", lstHD);
+        TaiKhoan user = (TaiKhoan) session.getAttribute("user");
 
-        return "quan-tri/hoa-don";
+        if (user.getRole().equals("Admin")) {
+            List<HoaDon> lstHD = service.getAll();
+            model.addAttribute("lstHD", lstHD);
+
+            return "quan-tri/hoa-don";
+        } else {
+            return "redirect:/";
+        }
+
+//        List<HoaDon> lstHD = service.getAll();
+//        model.addAttribute("lstHD", lstHD);
+
+//        return "quan-tri/hoa-don";
     }
 
     @GetMapping("/detail/{idHD}")

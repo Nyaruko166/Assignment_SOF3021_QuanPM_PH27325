@@ -96,18 +96,17 @@ SELECT TOP 10 tkg.Ten, SUM(hdct.SoLuong) AS tongSoLuong
 FROM TaiKhoanGame tkg
          JOIN HoaDonChiTiet hdct ON tkg.Id = hdct.IdTK
          JOIN HoaDon hd ON hdct.IdHD = hd.Id
-WHERE WEEK(hd.n) = 1
 GROUP BY tkg.Ten
 ORDER BY tongSoLuong DESC
 
-SELECT TOP 10 p.product_name, SUM(id.quantity) AS total_quantity
-FROM products p
-         JOIN invoice_details id ON p.product_id = id.product_id
-         JOIN invoices i ON id.invoice_id = i.invoice_id
-WHERE MONTH(i.invoice_date) = MONTH(GETDATE())
-  AND YEAR(i.invoice_date) = YEAR(GETDATE())
-GROUP BY p.product_name
-ORDER BY total_quantity DESC;
+--SELECT TOP 10 p.product_name, SUM(id.quantity) AS total_quantity
+--FROM products p
+--         JOIN invoice_details id ON p.product_id = id.product_id
+--         JOIN invoices i ON id.invoice_id = i.invoice_id
+--WHERE MONTH(i.invoice_date) = MONTH(GETDATE())
+--  AND YEAR(i.invoice_date) = YEAR(GETDATE())
+--GROUP BY p.product_name
+--ORDER BY total_quantity DESC;
 
 UPDATE HoaDon
 SET NgayThanhToan = '2023-03-02'
