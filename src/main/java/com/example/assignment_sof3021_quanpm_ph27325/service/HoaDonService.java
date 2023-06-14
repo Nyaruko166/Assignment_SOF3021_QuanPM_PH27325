@@ -44,4 +44,14 @@ public class HoaDonService implements IHoaDonService {
     public List<HoaDon> getAll() {
         return hoaDonRepository.findAll();
     }
+
+    @Override
+    public List<HoaDonChiTiet> getAllHDCT() {
+        return hdctRepository.findAll();
+    }
+
+    @Override
+    public List<HoaDonChiTiet> findByID(Integer idHD) {
+        return hdctRepository.findByHoaDon_Id(idHD);
+    }
 }
