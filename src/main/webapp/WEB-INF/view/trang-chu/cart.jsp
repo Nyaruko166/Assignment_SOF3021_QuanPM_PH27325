@@ -16,6 +16,15 @@
 <%@include file="../layout/header.jsp" %>
 
 <section class="container">
+
+    <c:if test="${not empty mess1}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>${mess1}</strong>
+            <a class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+               style="margin: 0"></a>
+        </div>
+    </c:if>
+
     <form name="form2" id="form2" method="post">
         <section class="h-100 h-custom" style="background-color: #d2c9ff;">
             <div class="container py-5 h-100">
@@ -126,7 +135,9 @@
                                                 <h5>${tongTien} VNĐ</h5>
                                             </div>
 
-                                            <button type="submit" class="btn btn-dark btn-block btn-lg"
+                                            <button form="form2" formaction="/cart/thanh-toan"
+                                                    formmethod="post" type="submit"
+                                                    class="btn btn-dark btn-block btn-lg"
                                                     data-mdb-ripple-color="dark">Thanh Toán
                                             </button>
 

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class GioHangViewServiceImpl implements IGioHangViewService {
+public class GioHangViewService implements IGioHangViewService {
 
     @Autowired
     private IGioHangService service;

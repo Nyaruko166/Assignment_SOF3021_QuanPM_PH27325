@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-public class GioHangServiceImpl implements IGioHangService {
+public class GioHangService implements IGioHangService {
 
     @Autowired
     private GioHangRepository repository;
