@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,8 +15,11 @@ public class ThongKe {
 
     private Long soLuong;
 
-    public ThongKe(String ten, Long soLuong) {
+    private Date ngay;
+
+    public ThongKe(String ten, Long soLuong, Date ngay) {
         this.ten = ten;
         this.soLuong = soLuong;
+        this.ngay = ngay;
     }
 }

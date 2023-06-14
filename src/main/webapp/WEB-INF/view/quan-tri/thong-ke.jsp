@@ -37,6 +37,7 @@
             <tr>
                 <td>${x.ten}</td>
                 <td>${x.soLuong}</td>
+                <td>${x.ngay}</td>
             </tr>
         </c:forEach>
         </tbody>

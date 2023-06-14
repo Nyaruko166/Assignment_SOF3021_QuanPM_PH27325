@@ -13,7 +13,7 @@ import java.util.List;
 public interface ThongKeRepository extends JpaRepository<TaiKhoanGame, Integer> {
 
     @Query("""
-                SELECT new com.example.assignment_sof3021_quanpm_ph27325.entity.ThongKe(tkg.ten, SUM(hdct.soLuong))
+                SELECT new com.example.assignment_sof3021_quanpm_ph27325.entity.ThongKe(tkg.ten, SUM(hdct.soLuong),hd.ngayThanhToan)
                 FROM TaiKhoanGame tkg
                 JOIN HoaDonChiTiet hdct ON tkg.id = hdct.taiKhoanGame.id
                 JOIN HoaDon hd ON hdct.hoaDon.id = hd.id
