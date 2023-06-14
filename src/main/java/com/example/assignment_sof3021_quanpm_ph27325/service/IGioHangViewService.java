@@ -10,4 +10,6 @@ public interface IGioHangViewService {
 
     List<GioHangView> getCartView();
 
+    void deleteCart();
+
 }

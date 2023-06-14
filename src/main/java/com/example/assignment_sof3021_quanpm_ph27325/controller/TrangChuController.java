@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -34,9 +35,15 @@ public class TrangChuController {
     }
 
     @GetMapping
-    public String view(Model model, HttpSession session) {
+    public String view(Model model, HttpSession session,
+                       @RequestParam(value = "ten", required = false) String Ten) {
         session.removeAttribute("mess1");
-        List<TaiKhoanGame> lstTK = service1.findAll();
+        List<TaiKhoanGame> lstTK;
+        if (Ten == null || Ten.isBlank()) {
+            lstTK = service1.findAll();
+        } else {
+            lstTK = service1.findByTenContains(Ten);
+        }
         model.addAttribute("lstTK", lstTK);
         return "trang-chu/index";
     }

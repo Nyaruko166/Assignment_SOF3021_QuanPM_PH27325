@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class TaiKhoanGameService implements ITaiKhoanGameService {
@@ -47,8 +48,12 @@ public class TaiKhoanGameService implements ITaiKhoanGameService {
         return repository.findByDonGiaBetween(min, max, pageable);
     }
 
+    @Override
+    public List<TaiKhoanGame> findByTenContains(String ten) {
+        return repository.findByTenContains(ten);
+    }
 
-//    public static void main(String[] args) {
+    //    public static void main(String[] args) {
 //        ITaiKhoanService service = new TaiKhoanService();
 //        List<TaiKhoan> lstTK = service.getAll();
 //        for (TaiKhoan x : lstTK) {

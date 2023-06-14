@@ -39,4 +39,9 @@ public class GioHangService implements IGioHangService {
         Map<Integer, Integer> cart = repository.getCartTK();
         cart.remove(idTK);
     }
+
+    @Override
+    public void emptyCart(Map<Integer, Integer> empty) {
+        repository.setCartTK(empty);
+    }
 }

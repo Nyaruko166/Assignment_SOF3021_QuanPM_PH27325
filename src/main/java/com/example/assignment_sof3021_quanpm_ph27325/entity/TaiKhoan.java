@@ -30,7 +30,4 @@ public class TaiKhoan {
 
     @Column(name = "role")
     private String role;
-
-    @Column(name = "trangthai")
-    private Boolean trangThai;
 }

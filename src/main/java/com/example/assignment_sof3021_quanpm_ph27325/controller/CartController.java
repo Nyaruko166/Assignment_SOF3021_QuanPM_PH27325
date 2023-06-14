@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -26,13 +25,15 @@ import java.util.Map;
 @Controller
 public class CartController {
 
-    SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
     @Autowired
     private IGioHangService gioHangService;
+
     @Autowired
     private IGioHangViewService gioHangViewService;
+
     @Autowired
     private IHoaDonService hoaDonService;
+
     @Autowired
     private ITaiKhoanGameService taiKhoanGameService;
 
@@ -74,6 +75,7 @@ public class CartController {
             hoaDonService.themHoaDonChiTiet(cart, lastHD);
 
             session.removeAttribute("cart");
+            gioHangViewService.deleteCart();
 
             session.setAttribute("mess1", "Thanh toán thành công, vui lòng check Email để nhận account");
             return "redirect:/cart";

@@ -36,8 +36,8 @@
                 <td>${x.hoaDon.id}</td>
                 <td>${x.taiKhoanGame.id}</td>
                 <td>${x.soLuong}</td>
-                <td>${x.donGia}</td>
-                <td>${x.thanhTien}</td>
+                <td>${x.donGia} VNĐ</td>
+                <td>${x.thanhTien} VNĐ</td>
                 <td>${x.ngayTao}</td>
             </tr>
         </c:forEach>

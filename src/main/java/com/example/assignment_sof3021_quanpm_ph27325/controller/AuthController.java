@@ -84,7 +84,7 @@ public class AuthController {
         resetSession(session);
 
         if (password.equals(rePassword)) {
-            service.saveTK(new TaiKhoan(null, username, password, email, "Khách Hàng", true));
+            service.saveTK(new TaiKhoan(null, username, password, email, "Khách Hàng"));
             model.addAttribute("mess", "Đăng ký thành công!! ");
             return "auth/login";
         } else {

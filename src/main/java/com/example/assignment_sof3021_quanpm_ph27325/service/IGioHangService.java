@@ -10,4 +10,6 @@ public interface IGioHangService {
     void updateCart(Integer idTK, Integer soLuong);
 
     void deleteCart(Integer idTK);
+
+    void emptyCart(Map<Integer, Integer> empty);
 }

@@ -8,7 +8,7 @@ CREATE TABLE TaiKhoanGame
 (
     Id      INT PRIMARY KEY IDENTITY (1,1),
     Ma      VARCHAR(20) UNIQUE,
-    Ten     NVARCHAR(50)   DEFAULT NULL,
+    Ten     NVARCHAR(100)  DEFAULT NULL,
     SoLuong INT,
     DonGia  DECIMAL(20, 0) DEFAULT 0,
     Server  VARCHAR(10)  NOT NULL,
@@ -41,7 +41,6 @@ CREATE TABLE TaiKhoan
     Password  VARCHAR(50),
     Email     VARCHAR(50),
     Role      NVARCHAR(50),
-    TrangThai BIT
 )
 
 ALTER TABLE HoaDonChiTiet
@@ -74,13 +73,64 @@ VALUES ('TK001', N'Tl10+ | Honkai Star Rail Reroll account', 123, 10000, 'Asia',
         '/img/ba10.jpg')
 
 
-INSERT INTO TaiKhoan (Username, Password, Email, Role, TrangThai)
-VALUES ('Nyaruko', 123123, N'occho1666@gmail.com', N'Admin', 1),
-       ('Nya', 123123, N'abcxyz@gmail.com', N'Khách Hàng', 0),
-       ('KhachHang', 123123, N'quanpmph27325@fpt.edu.vn', N'Khách Hàng', 1)
+INSERT INTO TaiKhoan (Username, Password, Email, Role)
+VALUES ('Nyaruko', 123123, N'occho1666@gmail.com', N'Admin'),
+       ('Nya', 123123, N'abcxyz@gmail.com', N'Khách Hàng'),
+       ('KhachHang', 123123, N'quanpmph27325@fpt.edu.vn', N'Khách Hàng'),
+       ('Nya123', 123456, N'abcxyzdhg@gmail.com', N'Khách Hàng'),
+       ('KhachHang123', 123123, N'abcdef@fpt.edu.vn', N'Khách Hàng')
 
 SELECT *
 FROM TaiKhoanGame
 
 SELECT *
 FROM TaiKhoan
+
+SELECT *
+FROM HoaDon
+
+SELECT *
+FROM HoaDonChiTiet
+
+SELECT TOP 10 tkg.Ten, SUM(hdct.SoLuong) AS tongSoLuong
+FROM TaiKhoanGame tkg
+         JOIN HoaDonChiTiet hdct ON tkg.Id = hdct.IdTK
+         JOIN HoaDon hd ON hdct.IdHD = hd.Id
+WHERE WEEK(hd.n) = 1
+GROUP BY tkg.Ten
+ORDER BY tongSoLuong DESC
+
+SELECT TOP 10 p.product_name, SUM(id.quantity) AS total_quantity
+FROM products p
+         JOIN invoice_details id ON p.product_id = id.product_id
+         JOIN invoices i ON id.invoice_id = i.invoice_id
+WHERE MONTH(i.invoice_date) = MONTH(GETDATE())
+  AND YEAR(i.invoice_date) = YEAR(GETDATE())
+GROUP BY p.product_name
+ORDER BY total_quantity DESC;
+
+UPDATE HoaDon
+SET NgayThanhToan = '2023-03-02'
+WHERE Id = 1;
+UPDATE HoaDon
+SET NgayThanhToan = '2023-02-11'
+WHERE Id = 2;
+UPDATE HoaDon
+SET NgayThanhToan = '2023-05-30'
+WHERE Id = 3;
+
+UPDATE HoaDonChiTiet
+SET NgayTao = '2023-03-02'
+WHERE IdHD = 1;
+UPDATE HoaDonChiTiet
+SET NgayTao = '2023-02-11'
+WHERE IdHD = 2;
+UPDATE HoaDonChiTiet
+SET NgayTao = '2023-05-30'
+WHERE IdHD = 3;
+
+DECLARE @date DATE;
+SET @date = '2023-06-14';
+
+SELECT DATEPART(WEEK, @date) AS week_number;
+

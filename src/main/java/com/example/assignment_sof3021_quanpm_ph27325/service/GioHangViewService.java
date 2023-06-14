@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,5 +48,13 @@ public class GioHangViewService implements IGioHangViewService {
     public List<GioHangView> getCartView() {
         gioHangConvert();
         return gioHangViewRepository.getCartView();
+    }
+
+    @Override
+    public void deleteCart() {
+        List<GioHangView> emptyCart = new ArrayList<>();
+        gioHangViewRepository.setCartView(emptyCart);
+        Map<Integer, Integer> emptyCart2 = new HashMap<>();
+        service.emptyCart(emptyCart2);
     }
 }

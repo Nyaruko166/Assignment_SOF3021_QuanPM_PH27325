@@ -76,6 +76,28 @@
 
 <section class="container">
     <h3 class="title" style="margin: 30px">Danh sách tài khoản game</h3>
+    <form class="container">
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-10">
+                        <label for="inputPassword2" class="visually-hidden">Tên tài khoản</label>
+                        <input type="text" class="form-control" id="inputPassword2" name="ten"
+                               placeholder="Nhập tên tài khoản">
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary mb-3">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+    </form>
     <div class="row" style="margin: 0 auto">
         <c:forEach items="${lstTK}" var="x">
             <div class="col-4" style="margin-bottom: 40px;display: flex;justify-content: center;">
